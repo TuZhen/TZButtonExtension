@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
   s.name         = "TZButtonExtension"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "对button的一些扩展功能."
   s.description  = <<-DESC
     对button的一些扩展功能，现阶段只包括按钮图片与文字位置的重新设定.
