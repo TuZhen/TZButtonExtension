@@ -25,7 +25,9 @@
     CGFloat imageViewRightInset = 0;
     
     CGRect titleLabelFrame = self.titleLabel.frame;
-    
+    NSDictionary *attrs = @{NSFontAttributeName : self.titleLabel.font};
+    CGSize titleLabelSize = [self.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    CGFloat titleLabelDifference = titleLabelSize.width-titleLabelFrame.size.width;
     CGFloat titleLabelTopInset = 0;
     CGFloat titleLabelLeftInset = 0;
     CGFloat titleLabelBottomInset = 0;
@@ -39,8 +41,8 @@
             imageViewRightInset = -imageViewLeftInset;
             titleLabelTopInset = -imageViewTopInset;
             titleLabelBottomInset = -titleLabelTopInset;
-            titleLabelLeftInset = -(self.frame.size.width-titleLabelFrame.size.width)*0.5+(self.frame.size.width-CGRectGetMaxX(titleLabelFrame));
-            titleLabelRightInset = -titleLabelLeftInset;
+            titleLabelLeftInset = -(self.frame.size.width-titleLabelFrame.size.width)*0.5+(self.frame.size.width-CGRectGetMaxX(titleLabelFrame))-titleLabelDifference*0.5;
+            titleLabelRightInset = -titleLabelLeftInset-titleLabelDifference;
             break;
         case ButtonImageArrangementTypeBottom:
             
@@ -74,5 +76,6 @@
     self.titleEdgeInsets = UIEdgeInsetsMake(titleLabelTopInset,titleLabelLeftInset, titleLabelBottomInset, titleLabelRightInset);
     
 }
+
 
 @end
